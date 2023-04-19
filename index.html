@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root1">Namaste React</div>   <!-- this 'Namaste React' will be replaced by react ele(line 23)-->
+    <div id="root"></div>
+    <script>
+        ele = document.createElement("h1");
+        text = document.createTextNode("Namsate JS");
+        ele.appendChild(text);
+        root.appendChild(text);   // here root is id(line:11)
+        
+    </script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script>
+        text = React.createElement("h1",{id:"text", className:"h1tag"},"heyyyy"); // inside createElement method we are passing (type, props)
+                                                               // in props we pass {attributes}(attributes like id,class,...)
+                                                               // and children(children can be simple steing as text or we can pass reactElement like line 29)
+        root = ReactDOM.createRoot(document.getElementById("root1"));  // passing react element inside id=root1
+        root.render(text);     // this will be replaced by line 32 dynamically
+        console.log(document.getElementById('root'), root);  // here first one prints line11; second one prints reactdom root line23
+      //  console.log(text)
+        // nesting react elements
+        text2 =  React.createElement("h2",{id:"nesting text"}, text);
+        console.log(text2)
+        root.render(text2)
+
+
+    </script>
+
+
+</body>
+</html>
