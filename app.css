@@ -1,0 +1,18 @@
+.header{
+  display: flex;  
+  border: 2px solid black; 
+  height: 150px;
+}
+img{
+    height: 140px;
+}
+.nav-items{
+}
+.nav-items>ul{
+    
+    max-width: 6px;
+}
+.nav-items>ul>li{
+    display: inline;
+    max-width: 6px;
+}

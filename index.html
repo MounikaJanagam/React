@@ -7,33 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <link rel="stylesheet" href="app.css">
     <script  type="module" crossorigin="" src="app.js"></script><!--when we have import and export statments in js we should include type="module"  
                                                                  to run it locally we need a live server here we are using parcel which will be providing a local server-->
-    <div id="root1">Namaste React</div>   <!-- this 'Namaste React' will be replaced by react ele(line 23)-->
+    
+    
     <div id="root"></div>
-    <script>
-        ele = document.createElement("h1");
-        text = document.createTextNode("Namsate JS");
-        ele.appendChild(text);
-      //  root.appendChild(ele);   // here root is id(line:11)
-        
-    </script>
-  <script>
-        text = React.createElement("h1",{id:"text", className:"h1tag"},"heyyyy"); // inside createElement method we are passing (type, props)
-                                                               // in props we pass {attributes}(attributes like id,class, can pass anything in json format...)
-                                                               // and children(children can be simple steing as text or we can pass reactElement like line 29)
-        root = ReactDOM.createRoot(document.getElementById("root1"));  // passing react element inside id=root1
-        root.render(text);     // this will be replaced by line 32 dynamically
-        console.log(document.getElementById('root'), root);  // here first one prints line11; second one prints reactdom root line23
-      //  console.log(text)
-        // nesting react elements
-        text2 =  React.createElement("h2",{id:"nesting text"}, text);
-        console.log(text2)
-        root.render(text2)
-
-
-    </script>
-
-
+    
 </body>
 </html>
