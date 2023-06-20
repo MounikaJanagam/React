@@ -1,18 +1,38 @@
 .header{
   display: flex;  
   border: 2px solid black; 
+  justify-content: space-between;
   height: 150px;
 }
-img{
+.appLogo{
     height: 140px;
 }
 .nav-items{
+    padding: 20px;
 }
 .nav-items>ul{
-    
-    max-width: 6px;
+    display: flex;
+    list-style-type: none;
 }
 .nav-items>ul>li{
-    display: inline;
-    max-width: 6px;
+    padding-left: 35px;
+    font-size: 25px;
+}
+
+
+.res-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-card{
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+}
+.res-card:hover{
+    border: 1px solid gray;;
+}
+.itemLogo{
+    height: 90px;
+    width: 100%;
 }
