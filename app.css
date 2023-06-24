@@ -2,11 +2,11 @@
   display: flex;  
   border: 2px solid black; 
   justify-content: space-between;
-  height: 150px;
 }
 .appLogo{
     height: 140px;
 }
+
 .nav-items{
     padding: 20px;
 }
@@ -40,4 +40,16 @@
 .itemLogo{
     height: 90px;
     width: 100%;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card{
+    background-color: rgb(212, 208, 208);
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    height: 300px;
 }

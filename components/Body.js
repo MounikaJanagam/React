@@ -1,20 +1,38 @@
-import dataobj from "../utilities/mockData";
 import { Rest_Logo } from "../utilities/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer.js";
 
 export const RestList = () => {
-    let [listofRest, setListofRest] = useState(dataobj);    // this is for filtering toprated restaurants we should pass this listofRest in RestCard component at line 42 to get top rated restaurants
-    let [inputValue, setInputValue] = useState();
-    let [searchList, setsearchList] = useState(dataobj);    // this is for searching  restaurants we should pass this searchList in RestCard component at line 42 to get the search restaurants
-    return (
+    const [listofRest, setListofRest] = useState([]);    // this is for filtering toprated restaurants we should pass this listofRest in RestCard component at line 42 to get top rated restaurants
+    const [inputValue, setInputValue] = useState("");
+    const [searchList, setsearchList] = useState([]);    // this is for searching  restaurants we should pass this searchList in RestCard component at line 42 to get the search restaurants
+    const [allRest, setAllRest] = useState([]);
+    
+    // empty dependency array => once after render
+    // dep arry [searchText] => once after initial render + everytime after redern (my searchText changes)
+    useEffect(()=>{
+        getRestarunats();
+      },[]
+
+    );
+    async function getRestarunats(){
+        const data = await  fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+        const json = await data.json();
+        console.log(json, json?.data?.cards[2]?.data?.data?.cards);
+       // Optional Chaining
+       setsearchList(json?.data?.cards[2]?.data?.data?.cards);
+       setAllRest(json?.data?.cards[2]?.data?.data?.cards);
+       setListofRest(json?.data?.cards[2]?.data?.data?.cards);
+    }
+    return allRest?.length==0 ? (<Shimmer/> ): (
         <>
         <div className="filters">
             {/* Filter functionality */}
             <button className="filter-btn" onClick={() => {
-                listofRest = listofRest.filter(
+                const listofRests = allRest.filter(
                             (rest) => rest.data.avgRating > 4
                 );
-                setListofRest(listofRest);
+                setListofRest(listofRests);
             // console.log("button clicked", listofRest);
                 } }
             >Top Rated Restarunts
@@ -31,12 +49,12 @@ export const RestList = () => {
             />
             <button className="search-btn" onClick={
                 () =>{
-                searchList = searchList.filter(
+               const searchListRest = allRest.filter(
                     (rest) =>{
-                      return  rest.data.name.includes(inputValue);
+                      return  rest.data.name.toLowerCase().includes(inputValue.toLowerCase());
                     }
                  );   
-                 setsearchList(searchList);
+                 setsearchList(searchListRest);
                 }
             }>Search
             </button>
