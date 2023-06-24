@@ -19,12 +19,17 @@
     font-size: 25px;
 }
 
+.filter-btn{
+    margin: 10px;
+    
+}
 
 .res-list{
     display: flex;
     flex-wrap: wrap;
 }
 .res-card{
+    background-color: rgb(212, 208, 208);
     margin: 5px;
     padding: 5px;
     width: 200px;
