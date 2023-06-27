@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { App_Logo } from "../utilities/constants";
+import { Link } from "react-router-dom";
 function HeaderComp(){
     const [login_logout,setLoginLogout] = useState("Login");
     return(
@@ -9,10 +10,18 @@ function HeaderComp(){
     </div>
     <div className="nav-items">
         <ul>
-            <li>Home</li>
-            <li>AboutUs</li>
-            <li>ContactUs</li>
-            <li>Cart</li>
+            <li>
+                <Link to={'/'}>Home</Link>
+            </li>
+            <li>
+                <Link to={'/About'}>AboutUs</Link>
+            </li>
+            <li>
+                <Link to={"/Contact"}>ContactUs</Link>
+            </li>
+            <li>
+                Cart
+            </li>
             <li>
             <button onClick={
                 ()=>{
