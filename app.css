@@ -53,3 +53,8 @@
     width: 200px;
     height: 300px;
 }
+.user-profile{
+    padding: 10px;
+    border: 1px solid black;
+    width: 300px;
+}

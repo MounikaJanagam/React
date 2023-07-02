@@ -67,7 +67,7 @@ export const RestList = () => {
     );
 }
 const RestCard = (props) => {
-    console.log(props.resData);
+    // console.log(props.resData);
     const {cloudinaryImageId,
         name,
         cuisines,
