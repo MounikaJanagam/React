@@ -1,4 +1,5 @@
 import React from "react";
+import { GIT_USER_PROFILE } from "../utilities/constants";
 class UserProfileClass extends React.Component{
     constructor(props){
         super();
@@ -10,7 +11,7 @@ class UserProfileClass extends React.Component{
      //   console.log(props);  // without super also props are one time printing with error ???? 
     }
     async componentDidMount(){
-        const data = await fetch("https://api.github.com/users/MounikaJanagam");
+        const data = await fetch(GIT_USER_PROFILE);
         const json = await data.json();
         this.setState({ userInfo : json});
       //  console.log(this.state.userInfo);    //  here userInfo is still userInfo :{login : "Mounika",}  the setState(apidata) will be updated after componentDidMount() in render method 

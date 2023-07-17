@@ -1,7 +1,6 @@
-import { Rest_Logo } from "../utilities/constants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer.js";
-import { Link } from "react-router-dom";
+import { REST_LIST_API } from "../utilities/constants.js";
 export const RestList = () => {
     const [listofRest, setListofRest] = useState([]);    // this is for filtering toprated restaurants we should pass this listofRest in RestCard component at line 42 to get top rated restaurants
     const [inputValue, setInputValue] = useState("");
@@ -16,7 +15,7 @@ export const RestList = () => {
 
     );
     async function getRestarunats(){
-        const data = await  fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+        const data = await  fetch(REST_LIST_API);
         const json = await data.json();
        // console.log(json, json?.data?.cards[2]?.data?.data?.cards);
        // Optional Chaining
@@ -66,27 +65,4 @@ export const RestList = () => {
             </div></>
     );
 }
-const RestCard = (props) => {
-    // console.log(props.resData);
-    const {cloudinaryImageId,
-        name,
-        cuisines,
-        area,
-        locality,
-        avgRating,
-        id
-    } = props.resData?.data;
-    return (
-        <div className="res-card">
-            <Link to={"restaurant/"+id}>
-                <img alt="itemLogo" className="itemLogo" src={Rest_Logo
-                    +cloudinaryImageId}>
-                </img>
-            </Link>
-             <h3>{name}</h3>
-             <h4>{cuisines.join(",")}</h4>
-             <h4>{locality+","+area}</h4>
-             <h4>{avgRating} Rating</h4>
-        </div>
-    );
-}
+

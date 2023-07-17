@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { App_Logo } from "../utilities/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatusClass from "../utilities/useOnlineStatusClass";
 function HeaderComp(){
     const [login_logout,setLoginLogout] = useState("Login");
+    const onlineStatus = useOnlineStatusClass();
     return(
     <div className="header">
     <div >
