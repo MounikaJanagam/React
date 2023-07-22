@@ -1,4 +1,5 @@
-
+import { Link } from "react-router-dom";
+import { Rest_Logo } from "../utilities/constants";
 const RestCard = (props) => {
     // console.log(props.resData);
     const {cloudinaryImageId,

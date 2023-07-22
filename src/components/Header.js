@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { App_Logo } from "../utilities/constants";
 import { Link } from "react-router-dom";
-import useOnlineStatusClass from "../utilities/useOnlineStatusClass";
+import OnlineStatusClass from "../utilities/useOnlineStatusClass";
+import useOnlineStatus from "../utilities/useOnlineStatus";
 function HeaderComp(){
     const [login_logout,setLoginLogout] = useState("Login");
-    const onlineStatus = useOnlineStatusClass();
+    const online = useOnlineStatus();
     return(
     <div className="header">
     <div >
@@ -12,6 +13,7 @@ function HeaderComp(){
     </div>
     <div className="nav-items">
         <ul>
+            <li>Online:{online ? '🟢' : '🔴'}</li>
             <li>
                 <Link to={'/'}>Home</Link>
             </li>

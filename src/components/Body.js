@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer.js";
 import { REST_LIST_API } from "../utilities/constants.js";
+import RestCard from "./RestaurantCard.js";
 export const RestList = () => {
     const [listofRest, setListofRest] = useState([]);    // this is for filtering toprated restaurants we should pass this listofRest in RestCard component at line 42 to get top rated restaurants
     const [inputValue, setInputValue] = useState("");

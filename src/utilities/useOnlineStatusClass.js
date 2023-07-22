@@ -1,13 +1,13 @@
 import React from "react";
-class useOnlineStatusClass extends React.Component{
+class OnlineStatusClass extends React.Component{
     constructor(props){
         super(props);
         this.state ={
             onlineStatus : true,
         }
     };
-    componentDidMount(){
-        
+    componentDidUpdate(){
+        console.log("useclass update",this.state.onlineStatus);
         window.addEventListener("online",()=>{
             this.setState(
                 onlineStatus = true,
@@ -19,11 +19,12 @@ class useOnlineStatusClass extends React.Component{
                 onlineStatus = false,
             )
         });
-        return onlineStatus ;
+        console.log("useclass after update",this.state.onlineStatus);
     };
     render(){
-
+        console.log("render useclass", this.state.onlineStatus);
+        return <h2>{this.state.onlineStatus}</h2> ;
     }
 }
 
-export default useOnlineStatusClass;
+export default OnlineStatusClass;
