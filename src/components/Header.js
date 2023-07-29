@@ -7,26 +7,26 @@ function HeaderComp(){
     const [login_logout,setLoginLogout] = useState("Login");
     const online = useOnlineStatus();
     return(
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-lg">
     <div >
-        <img className="appLogo" alt="app-logo" src={App_Logo}></img>
+        <img className="w-20" alt="app-logo" src={App_Logo}></img>
     </div>
-    <div className="nav-items">
-        <ul>
-            <li>Online:{online ? '🟢' : '🔴'}</li>
-            <li>
+    <div>
+        <ul className="flex p-5">
+            <li className="px-4">Online:{online ? '🟢' : '🔴'}</li>
+            <li className="px-4">
                 <Link to={'/'}>Home</Link>
             </li>
-            <li>
+            <li className="px-4">
                 <Link to={'/About'}>AboutUs</Link>
             </li>
-            <li>
+            <li className="px-4">
                 <Link to={"/Contact"}>ContactUs</Link>
             </li>
-            <li>
+            <li className="px-4">
                 Cart
             </li>
-            <li>
+            <li className="px-4 rounded-full bg-sky-300">
             <button onClick={
                 ()=>{
                     setLoginLogout(login_logout=="Login" ? "Logout" : "Login");

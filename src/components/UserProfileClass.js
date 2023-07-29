@@ -33,8 +33,8 @@ class UserProfileClass extends React.Component{
        const {login,id,avatar_url} = this.state.userInfo;
    //    console.log(this.state.userInfo);
         return(
-            <div className="user-profile">
-                <img alt="profile" src={avatar_url} style={{width : '100%'}}></img>
+            <div className="m-4 p-4 bg-gray-50 rounded-lg  w-[250px]">
+                <img alt="profile" src={avatar_url}></img>
                 <h2>Name : {login}</h2>
                 <h2>id : {id}</h2>
             </div>

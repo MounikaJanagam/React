@@ -20,48 +20,51 @@ export const RestList = () => {
         const json = await data.json();
        // console.log(json, json?.data?.cards[2]?.data?.data?.cards);
        // Optional Chaining
-       setsearchList(json?.data?.cards[2]?.data?.data?.cards);
-       setAllRest(json?.data?.cards[2]?.data?.data?.cards);
-       setListofRest(json?.data?.cards[2]?.data?.data?.cards);
+       setsearchList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+       setAllRest(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+       setListofRest(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     return allRest?.length==0 ? (<Shimmer/> ): (
         <>
-        <div className="filters">
-            {/* Filter functionality */}
-            <button className="filter-btn" onClick={() => {
-                const listofRests = allRest.filter(
-                            (rest) => rest.data.avgRating > 4
-                );
-                setListofRest(listofRests);
-            // console.log("button clicked", listofRest);
-                } }
-            >Top Rated Restarunts
-            </button>
-
+        <div className="p-4 flex">
+            <div >
+                {/* Filter functionality */}
+                <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() => {
+                    const listofRests = allRest.filter(
+                                (rest) => rest.info.avgRating > 4
+                    );
+                    setListofRest(listofRests);
+                // console.log("button clicked", listofRest);
+                    } }
+                >Top Rated Restarunts
+                </button>
+            </div>
+            <div>
             {/*search   functionality*/}
-            <input className="input-value" value={inputValue} placeholder="Enter"
-                onChange={
-                    (e) =>{
-                     setInputValue(e.target.value);
-                   //  console.log(inputValue);
+                <input className="border border-solid border-black" value={inputValue} placeholder="Enter"
+                    onChange={
+                        (e) =>{
+                        setInputValue(e.target.value);
+                    //  console.log(inputValue);
+                        }
                     }
-                }
-            />
-            <button className="search-btn" onClick={
-                () =>{
-               const searchListRest = allRest.filter(
-                    (rest) =>{
-                      return  rest.data.name.toLowerCase().includes(inputValue.toLowerCase());
+                />
+                <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={
+                    () =>{
+                const searchListRest = allRest.filter(
+                        (rest) =>{
+                        return  rest.info.name.toLowerCase().includes(inputValue.toLowerCase());
+                        }
+                    );   
+                    setsearchList(searchListRest);
                     }
-                 );   
-                 setsearchList(searchListRest);
-                }
-            }>Search
-            </button>
+                }>Search
+                </button>
+            </div>
         </div>
-        <div className="res-list">
+        <div className="flex flex-wrap">
                 {searchList.map((rest) => (
-                    <RestCard key={rest.data.id} resData={rest}></RestCard>
+                    <RestCard key={rest.info.id} resData={rest}></RestCard>
                 ))}
             </div></>
     );
