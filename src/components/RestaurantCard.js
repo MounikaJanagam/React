@@ -12,7 +12,7 @@ const RestCard = (props) => {
         id
     } = props.resData?.info;
     return (
-        <div className="m-4 p-4 w-[232px] rounded-lg bg-gray-100 hover:bg-gray-200">
+        <div className="m-4 p-4 w-[232px] h-[400px] rounded-lg bg-gray-100 hover:bg-gray-200">
             <Link to={"restaurant/"+id}>
                 <img alt="itemLogo" className="" src={Rest_Logo
                     +cloudinaryImageId}>
@@ -25,6 +25,16 @@ const RestCard = (props) => {
              <h4>{avgRating} Rating</h4>
         </div>
     );
+}
+export const withOpenLabel = (RestCard) =>{
+    return (props)=>{
+        return(
+            <div>
+                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Open</label>
+                <RestCard {...props}/>
+            </div>
+        );
+    };
 }
 
 export default RestCard;
