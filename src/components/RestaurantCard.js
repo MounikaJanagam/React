@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Rest_Logo } from "../utilities/constants";
+import { useContext } from "react";
+import UserContext from "../utilities/UserContext";
 const RestCard = (props) => {
     // console.log(props.resData);
     const {cloudinaryImageId,
@@ -11,6 +13,7 @@ const RestCard = (props) => {
         avgRating,
         id
     } = props.resData?.info;
+    const {loggedInUser} = useContext(UserContext);
     return (
         <div className="m-4 p-4 w-[232px] h-[400px] rounded-lg bg-gray-100 hover:bg-gray-200">
             <Link to={"restaurant/"+id}>
@@ -23,6 +26,7 @@ const RestCard = (props) => {
              <h4>{locality+","+area}</h4>
              <h4>{costForTwo}</h4>
              <h4>{avgRating} Rating</h4>
+             <h4>{loggedInUser}</h4>
         </div>
     );
 }

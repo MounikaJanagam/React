@@ -1,6 +1,6 @@
 import { Rest_Logo } from "../utilities/constants";
 
-const ItemList = ({itemCards})=> {
+const ItemList = ({itemCards})=> { 
  return (
     <div>
     {itemCards.map( (item)=>(
@@ -9,7 +9,7 @@ const ItemList = ({itemCards})=> {
                 <div>
                     <span className="">{item?.card?.info?.name}</span>
                     <span>₹{item?.card?.info?.price ? 
-                    item?.card?.info?.price : item?.card?.info?.defaultPrice/100 }</span>
+                    item?.card?.info?.price/100 : item?.card?.info?.defaultPrice/100 }</span>
                 </div>
                 <div>
                     <p className="text-xs">{item?.card?.info?.description}</p>

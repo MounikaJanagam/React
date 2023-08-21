@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { App_Logo } from "../utilities/constants";
 import { Link } from "react-router-dom";
 import OnlineStatusClass from "../utilities/useOnlineStatusClass";
 import useOnlineStatus from "../utilities/useOnlineStatus";
+import UserContext from "../utilities/UserContext";
 function HeaderComp(){
     const [login_logout,setLoginLogout] = useState("Login");
     const online = useOnlineStatus();
+  //  const loggedInUserValue = useContext(UserContext);  if only one defaule value given instead of obj
+  const {loggedInUser} = useContext(UserContext);  // the param declared in useContext(Object)
     return(
     <div className="flex justify-between bg-pink-100 shadow-lg">
     <div >
@@ -25,6 +28,9 @@ function HeaderComp(){
             </li>
             <li className="px-4">
                 Cart
+            </li>
+            <li className="px-4">
+                UserName:{loggedInUser}
             </li>
             <li className="px-4 rounded-full bg-sky-300">
             <button onClick={

@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer.js";
 import { REST_LIST_API } from "../utilities/constants.js";
 import RestCard, { withOpenLabel } from "./RestaurantCard.js";
+import UserContext from "../utilities/UserContext.js";
 export const RestList = () => {
     const [listofRest, setListofRest] = useState([]);    // this is for filtering toprated restaurants we should pass this listofRest in RestCard component at line 42 to get top rated restaurants
     const [inputValue, setInputValue] = useState("");
     const [searchList, setsearchList] = useState([]);    // this is for searching  restaurants we should pass this searchList in RestCard component at line 42 to get the search restaurants
     const [allRest, setAllRest] = useState([]);
-    
+    const {setUserName, loggedInUser} = useContext(UserContext);
     const RestaurantCardOpen = withOpenLabel(RestCard);
 
     // empty dependency array => once after render
@@ -62,6 +63,15 @@ export const RestList = () => {
                     }
                 }>Search
                 </button>
+            </div>
+            <div className="p-5">
+                <input className="border border-solid border-black"  placeholder="Enter something to change name UserName in body level comp"
+                     value={loggedInUser} onChange={
+                        (e) =>{
+                        setUserName(e.target.value);
+                        }
+                    }
+                />
             </div>
         </div>
         <div className="flex flex-wrap">
